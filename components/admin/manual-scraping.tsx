@@ -52,7 +52,7 @@ const ManualScraping = () => {
       }
 
       if (data) {
-        const typedData = data.map(item => ({
+        const typedData: Lottery[] = data.map((item: { id: any; name: any }) => ({
           id: String(item.id),
           name: String(item.name)
         }));
