@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { NumberFrequency } from '@/types';
 
+interface LotteryResult {
+  numbers: number[];
+  draw_date: string;
+  draw_time: string;
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -44,8 +50,8 @@ export async function GET(request: Request) {
     // Calculate number frequency
     const frequencyMap: Record<number, number> = {};
     
-    results.forEach(result => {
-      result.numbers.forEach(num => {
+    results.forEach((result: LotteryResult) => {
+      result.numbers.forEach((num: number) => {
         frequencyMap[num] = (frequencyMap[num] || 0) + 1;
       });
     });
