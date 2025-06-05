@@ -52,7 +52,7 @@ const ManualScraping = () => {
       }
 
       if (data) {
-        setLotteries(data);
+        setLotteries(data as Lottery[]);
       }
       setLoading(false);
     };
