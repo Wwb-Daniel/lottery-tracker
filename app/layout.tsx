@@ -11,11 +11,6 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Lottery Tracker | Resultados de Loterías Dominicanas',
   description: 'Seguimiento de resultados de loterías dominicanas, estadísticas y predicciones.',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({
@@ -25,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
