@@ -50,11 +50,11 @@ export async function GET(request: Request) {
     // Calculate number frequency
     const frequencyMap: Record<number, number> = {};
     
-    results.forEach((result: LotteryResult) => {
-      result.numbers.forEach((num: number) => {
+    for (const result of results as LotteryResult[]) {
+      for (const num of result.numbers) {
         frequencyMap[num] = (frequencyMap[num] || 0) + 1;
-      });
-    });
+      }
+    }
     
     // Create array of number frequencies
     const frequency: NumberFrequency[] = [];
