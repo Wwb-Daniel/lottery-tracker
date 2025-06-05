@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "scrape": "node scripts/scrape.js",
+    "predict": "node scripts/predict.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {
