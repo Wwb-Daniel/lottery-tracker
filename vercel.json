@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
   "builds": [
     {
       "src": "package.json",
@@ -8,8 +12,18 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/scrape",
+      "schedule": "0 */6 * * *"
     }
   ]
 } 
