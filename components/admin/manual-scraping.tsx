@@ -101,15 +101,7 @@ const ManualScraping = () => {
         }
 
         if (logEntry) {
-          const typedLogEntry: ScrapingLog = {
-            id: Number(logEntry.id),
-            lottery_id: String(logEntry.lottery_id),
-            status: logEntry.status as 'pending' | 'running' | 'completed' | 'error',
-            message: String(logEntry.message),
-            details: String(logEntry.details),
-            created_at: String(logEntry.created_at)
-          };
-          logEntries.push(typedLogEntry);
+          logEntries.push(logEntry as ScrapingLog);
         }
       } catch (error) {
         console.error('Error in log creation:', error);
