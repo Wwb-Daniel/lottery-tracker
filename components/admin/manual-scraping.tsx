@@ -52,7 +52,11 @@ const ManualScraping = () => {
       }
 
       if (data) {
-        setLotteries(data as Lottery[]);
+        const typedData = data.map(item => ({
+          id: String(item.id),
+          name: String(item.name)
+        }));
+        setLotteries(typedData);
       }
       setLoading(false);
     };
