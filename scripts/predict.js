@@ -5,6 +5,12 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 // Inicializar cliente Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error('Error: Las variables de entorno NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY son requeridas');
+  process.exit(1);
+}
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Función para obtener resultados históricos
@@ -216,4 +222,7 @@ async function predictAllGames() {
 }
 
 // Ejecutar predicciones
-predictAllGames().catch(console.error); 
+predictAllGames().catch(error => {
+  console.error('Error al ejecutar predicciones:', error);
+  process.exit(1);
+}); 
